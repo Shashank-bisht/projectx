@@ -1,0 +1,132 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const Home = () => {
+    const [busNumber, setBusNumber] = useState('');
+    const [routeNumber, setRouteNumber] = useState('');
+    const [fare, setFare] = useState('');
+    const [time, setTime] = useState('');
+    const [date, setDate] = useState('');
+    const [startingStop, setStartingStop] = useState('');
+    const [endingStop, setEndingStop] = useState('');
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        // Format Date
+        const formattedDate = new Date(date);
+        const day = formattedDate.getDate(); // Get the day (1-31)
+        const options = { month: 'short' }; // Get the month in short format
+        const month = formattedDate.toLocaleDateString('en-US', options); // e.g., "Sept"
+        
+        const year = formattedDate.getFullYear().toString().slice(-2); // Get last two digits of the year
+        const formattedDateString = `${day} ${month}, ${year}`; // Combine as "19 Sep, 24"
+
+        // Format Time
+        const [hour, minute] = time.split(':');
+        const formattedHour = hour % 12 || 12; // Convert to 12-hour format
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        const formattedTimeString = `${formattedHour}:${minute} ${ampm}`;
+
+        const busDetails = {
+            busNumber,
+            routeNumber,
+            fare,
+            time: formattedTimeString,
+            date: formattedDateString,
+            startingStop,
+            endingStop,
+        };
+
+        navigate('/ticket', { state: { busDetails } });
+    };
+
+    return (
+        <div>
+            <h1 className='ml-9 mt-10'>Bus Information Form</h1>
+            <form className='my-7 ml-10 space-y-5' onSubmit={handleSubmit}>
+                <div>
+                    <label>
+                        Bus Number:
+                        <input
+                            type="text"
+                            value={busNumber}
+                            onChange={(e) => setBusNumber(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Route Number:
+                        <input
+                            type="text"
+                            value={routeNumber}
+                            onChange={(e) => setRouteNumber(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Fare:
+                        <input
+                            type="number"
+                            value={fare}
+                            onChange={(e) => setFare(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Time:
+                        <input
+                            type="time"
+                            value={time}
+                            onChange={(e) => setTime(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Date:
+                        <input
+                            type="date"
+                            value={date}
+                            onChange={(e) => setDate(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Starting Stop:
+                        <input
+                            type="text"
+                            value={startingStop}
+                            onChange={(e) => setStartingStop(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Ending Stop:
+                        <input
+                            type="text"
+                            value={endingStop}
+                            onChange={(e) => setEndingStop(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <button className='bg-black text-white p-6' type="submit">Submit</button>
+            </form>
+        </div>
+    );
+};
+
+export default Home;
