@@ -1,11 +1,12 @@
 import React from 'react';
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { QRCodeCanvas } from 'qrcode.react';
 
 const Ticket = () => {
   const location = useLocation();
   const { busDetails } = location.state; // Access the passed bus details
-
+  const [showQRCode, setShowQRCode] = useState(false); // State to track QR code visibility
   function generateRandomCode(length = 18) {
     const characters = 'abcd023456789'; // Only lowercase letters and digits
     let randomCode = '';
@@ -18,6 +19,11 @@ const Ticket = () => {
 
   // Generate the random code
   const randomCode = generateRandomCode();
+// Function to toggle QR code visibility
+const toggleQRCode = () => {
+  setShowQRCode(!showQRCode);
+};
+
 
   return (
     <div className="pt-10 h-screen">
@@ -30,14 +36,29 @@ const Ticket = () => {
       </nav>
       {/* h1 */}
       <div className="mt-52 bg-white mx-4 rounded-md h-[51%]">
-        <h1 className='font-bold px-24 text-lg pt-2.5'>Transport Dept. of Delhi</h1>
+
+        {
+          showQRCode ? (
+            <div className="p-7" onClick={toggleQRCode}>
+            <QRCodeCanvas
+              className=""
+              value={`https://example.com/${randomCode}`} // Unique QR value
+              size={350}
+              bgColor="white" // Light green background
+              fgColor="black" // QR code color
+              level="H"
+            />
+          </div>
+          ):(
+<>
+<h1 className='font-bold px-24 text-lg pt-2.5'>Transport Dept. of Delhi</h1>
         {/* number and fare */}
-        <div className='flex items-end'>
+        <div className='flex items-end '>
           <div>
             <p className='text-lg ml-5 mr-1 mt-2 inline-block'> {busDetails.busNumber}</p>
           </div>
           <div>
-            <p className='text-lg ml-52 inline'>{'\u20B9'}{busDetails.fare - 1.5}</p>
+            <p className='text-lg ml-48 inline'>{'\u20B9'}{(busDetails.fare - (busDetails.fare/10)+.25)}</p>
           </div>
         </div>
         <hr className="border-t-1.5 mx-5 mt-2 border-black" />
@@ -65,13 +86,13 @@ const Ticket = () => {
           <div className='ml-5 mt-2 mr-40 text-sm'>
             <p>Booking Time</p>
           </div>
-          <div className='ml-14 text-sm'>
+          <div className='ml-10 text-sm'>
             <p>Tickets</p>
           </div>
         </div>
 
         {/* booking date and time and number of ticket */}
-        <div className='flex items-end space-x-16'>
+        <div className='flex items-end space-x-15'>
           <div className='ml-4 mr-10 text-lg'>
             <p>{busDetails.date}<span className="mx-1">|</span>{busDetails.time}</p>
           </div>
@@ -102,10 +123,14 @@ const Ticket = () => {
               fgColor="#519c51" // QR code color
             />
           <div>
-          <p className='bg-green-100 text-green-600 font-bold border-green-900  text-center'>Show QR code</p>
+          <p className='bg-green-100 text-green-600 font-semibold border-green-900  text-center' onClick={toggleQRCode}>Show QR code</p>
           </div>
           </div>
         </div>
+</>
+          )
+        }
+       
       </div>
     </div>
   );
