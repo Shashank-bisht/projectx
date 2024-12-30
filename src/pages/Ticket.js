@@ -27,7 +27,7 @@ const toggleQRCode = () => {
 
   return (
     <div className="pt-10 h-screen">
-      <nav className='pt-12 flex items-end'>
+      <nav className='pt-16 flex items-end'>
         <div className="text-white flex items-center ml-4">
           <p className="mr-5 ml-2 text-2xl">x</p>
           <p className='text-lg'>Ticket</p>
@@ -55,7 +55,7 @@ const toggleQRCode = () => {
         {/* number and fare */}
         <div className='flex items-end '>
           <div>
-            <p className='text-lg ml-5 mr-1 mt-2 inline-block'> {busDetails.busNumber}</p>
+            <p className='text-lg ml-5 mr-2 mt-2 inline-block'> {busDetails.busNumber}</p>
           </div>
           <div>
             <p className='text-lg ml-48 inline'>{'\u20B9'}{(busDetails.fare - (busDetails.fare/10)+.25)}</p>
@@ -76,7 +76,7 @@ const toggleQRCode = () => {
           <div className='ml-5 mr-56 text-lg'>
             <p>{busDetails.routeNumber}</p>
           </div>
-          <div className='ml-30 text-lg'>
+          <div className='ml-28 text-lg'>
             <p className='font-bold'>{'\u20B9'}{busDetails.fare}.0</p>
           </div>
         </div>
@@ -131,6 +131,9 @@ const toggleQRCode = () => {
           )
         }
        
+      </div>
+      <div className='mt-32 ml-36'>
+        <div className='flex items-center'> <img className='w-11 h-[17px] inline' src='/im.png'/><p className='inline m-1 font-bold text-gray-600 '>NETWORK</p></div>
       </div>
     </div>
   );
