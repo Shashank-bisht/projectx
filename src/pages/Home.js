@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -9,23 +9,40 @@ const Home = () => {
     const [date, setDate] = useState('');
     const [startingStop, setStartingStop] = useState('');
     const [endingStop, setEndingStop] = useState('');
+    const [color, setColor] = useState('');
     const navigate = useNavigate();
+
+    // Define custom shades for colors
+    const colorShades = {
+        blue: '#0bc1c1', // Custom shade of blue
+        green: '#66a64c', // Custom shade of green
+        orange: '#f08b35', // Custom shade of orange
+    };
+
+    // Update background color dynamically based on user input
+    useEffect(() => {
+        const shade = colorShades[color.toLowerCase()];
+        if (shade) {
+            document.body.style.backgroundColor = shade;
+        } else {
+            document.body.style.backgroundColor = 'white'; // Default background
+        }
+    }, [color]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         // Format Date
         const formattedDate = new Date(date);
-        const day = formattedDate.getDate(); // Get the day (1-31)
-        const options = { month: 'short' }; // Get the month in short format
-        const month = formattedDate.toLocaleDateString('en-US', options); // e.g., "Sept"
-        
-        const year = formattedDate.getFullYear().toString().slice(-2); // Get last two digits of the year
-        const formattedDateString = `${day} ${month}, ${year}`; // Combine as "19 Sep, 24"
+        const day = formattedDate.getDate();
+        const options = { month: 'short' };
+        const month = formattedDate.toLocaleDateString('en-US', options);
+        const year = formattedDate.getFullYear().toString().slice(-2);
+        const formattedDateString = `${day} ${month}, ${year}`;
 
         // Format Time
         const [hour, minute] = time.split(':');
-        const formattedHour = hour % 12 || 12; // Convert to 12-hour format
+        const formattedHour = hour % 12 || 12;
         const ampm = hour >= 12 ? 'PM' : 'AM';
         const formattedTimeString = `${formattedHour}:${minute} ${ampm}`;
 
@@ -37,6 +54,7 @@ const Home = () => {
             date: formattedDateString,
             startingStop,
             endingStop,
+            color,
         };
 
         navigate('/ticket', { state: { busDetails } });
@@ -46,6 +64,17 @@ const Home = () => {
         <div>
             <h1 className='ml-9 mt-10'>Bus Information Form</h1>
             <form className='my-7 ml-10 space-y-5' onSubmit={handleSubmit}>
+                <div>
+                    <label>
+                        Color:
+                        <input
+                            type="text"
+                            value={color}
+                            onChange={(e) => setColor(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
                 <div>
                     <label>
                         Bus Number:
