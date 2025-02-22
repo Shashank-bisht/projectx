@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -18,16 +18,6 @@ const Home = () => {
         green: '#66a64c', // Custom shade of green
         orange: '#f08b35', // Custom shade of orange
     };
-
-    // Update background color dynamically based on user input
-    useEffect(() => {
-        const shade = colorShades[color.toLowerCase()];
-        if (shade) {
-            document.body.style.backgroundColor = shade;
-        } else {
-            document.body.style.backgroundColor = 'white'; // Default background
-        }
-    }, [color]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -54,7 +44,7 @@ const Home = () => {
             date: formattedDateString,
             startingStop,
             endingStop,
-            color,
+            color: colorShades[color.toLowerCase()] || 'white', // Pass the selected color
         };
 
         navigate('/ticket', { state: { busDetails } });
