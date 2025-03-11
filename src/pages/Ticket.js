@@ -41,7 +41,7 @@ const Ticket = () => {
                 <div className='text-white underline mb-1 font-bold ml-52'>All tickets</div>
             </nav>
             {/* h1 */}
-            <div className="mt-52 bg-white mx-4 rounded-md h-[51%]">
+            <div className="mt-52 bg-white mx-4 rounded-md h-[49%]">
                 {showQRCode ? (
                     <div className="p-7" onClick={toggleQRCode}>
                         <QRCodeCanvas
@@ -113,12 +113,12 @@ const Ticket = () => {
                             <p className='text-lg text-black'>{busDetails.endingStop}</p>
                         </div>
                         {/* random code */}
-                        <div className='mt-2 ml-32'>
+                        <div className='mt-1 ml-32'>
                             <p className='text-sm'>T{randomCode}</p>
                         </div>
                         {/* qr code */}
                         <div>
-                            <div className='flex m-4 py-3 border-green-600 rounded-lg border-2 bg-green-100 items-center'>
+                            <div className='flex m-3 py-3 border-green-600 rounded-lg border-2 bg-green-100 items-center'>
                                 <QRCodeCanvas className='ml-24 mr-2'
                                     value="https://example.com" // Replace with your URL or text
                                     size={25}
