@@ -52,10 +52,10 @@ const Home = () => {
 
     return (
         <div>
-            <h1 className='ml-9 mt-10'>Bus Information Form</h1>
+            <h1 className='text-white ml-9 mt-10'>Bus Information Form</h1>
             <form className='my-7 ml-10 space-y-5' onSubmit={handleSubmit}>
                 <div>
-                    <label>
+                    <label className='text-white'>
                         Color:
                         <input
                             type="text"
@@ -66,7 +66,7 @@ const Home = () => {
                     </label>
                 </div>
                 <div>
-                    <label>
+                    <label className='text-white'>
                         Bus Number:
                         <input
                             type="text"
@@ -77,7 +77,7 @@ const Home = () => {
                     </label>
                 </div>
                 <div>
-                    <label>
+                    <label className='text-white'>
                         Route Number:
                         <input
                             type="text"
@@ -88,7 +88,7 @@ const Home = () => {
                     </label>
                 </div>
                 <div>
-                    <label>
+                    <label className='text-white'>
                         Fare:
                         <input
                             type="number"
@@ -99,7 +99,7 @@ const Home = () => {
                     </label>
                 </div>
                 <div>
-                    <label>
+                    <label className='text-white'>
                         Time:
                         <input
                             type="time"
@@ -110,7 +110,7 @@ const Home = () => {
                     </label>
                 </div>
                 <div>
-                    <label>
+                    <label className='text-white'>
                         Date:
                         <input
                             type="date"
@@ -121,7 +121,7 @@ const Home = () => {
                     </label>
                 </div>
                 <div>
-                    <label>
+                    <label className='text-white'>
                         Starting Stop:
                         <input
                             type="text"
@@ -132,7 +132,7 @@ const Home = () => {
                     </label>
                 </div>
                 <div>
-                    <label>
+                    <label className='text-white'>
                         Ending Stop:
                         <input
                             type="text"
