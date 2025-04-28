@@ -9,7 +9,7 @@ const Ticket = () => {
 
     // Apply the background color from busDetails
     useEffect(() => {
-        document.body.style.backgroundColor = busDetails.color || 'white';
+        document.body.style.backgroundColor = 'black';
     }, [busDetails.color]);
 
     // Function to generate a random code
@@ -32,8 +32,9 @@ const Ticket = () => {
     };
 
     return (
-        <div className="mt-24 pt-8 h-screen">
-            <nav className='flex mt-7 items-end'>
+        <div className="mt-20 pt-14 h-screen" >
+            <div className='h-[99vh]' style={{ backgroundColor: busDetails.color }} >
+            <nav className='flex mt-9 items-end'>
                 <div className="text-white flex items-center ml-4">
                     <p className="mr-5 ml-2 text-2xl">x</p>
                     <p className='text-lg'>Ticket</p>
@@ -41,7 +42,7 @@ const Ticket = () => {
                 <div className='text-white underline mb-1 font-bold ml-52'>All tickets</div>
             </nav>
             {/* h1 */}
-            <div className="mt-52 bg-white mx-4 rounded-md h-[48.5%]">
+            <div className="mt-52 bg-white mx-4 rounded-md h-[46.5%]" >
                 {showQRCode ? (
                     <div className="p-7" onClick={toggleQRCode}>
                         <QRCodeCanvas
@@ -138,6 +139,7 @@ const Ticket = () => {
             </div>
             <div className='h-1 my-3 mx-auto'>
                 <p className='bg-red-700 text-sm text-center text-white'>Powered by IIIT Delhi</p>
+            </div>
             </div>
         </div>
     );
