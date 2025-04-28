@@ -33,7 +33,7 @@ const Ticket = () => {
 
     return (
         <div className="mt-24 pt-8 h-screen">
-            <nav className='flex items-end'>
+            <nav className='flex mt-7 items-end'>
                 <div className="text-white flex items-center ml-4">
                     <p className="mr-5 ml-2 text-2xl">x</p>
                     <p className='text-lg'>Ticket</p>
@@ -62,7 +62,7 @@ const Ticket = () => {
                                 <p className='text-lg ml-5 mr-2 mt-2 inline-block'> {busDetails.busNumber}</p>
                             </div>
                             <div>
-                                <p className='text-lg ml-[190px] inline'>{'\u20B9'}{(busDetails.fare - (busDetails.fare / 10) + .25)}</p>
+                                <p className='text-lg ml-[195px] inline'>{'\u20B9'}{(busDetails.fare * 0.9).toFixed(1)}</p>
                             </div>
                         </div>
                         <hr className="border-t-1.5 mx-5 mt-2 border-black" />
@@ -118,15 +118,15 @@ const Ticket = () => {
                         </div>
                         {/* qr code */}
                         <div>
-                            <div className='flex ml-3 mr-3 mb-3 mt-2 py-3 border-green-600 rounded-lg border-2 bg-green-100 items-center'>
+                            <div className='flex ml-3 mr-3 mb-3 mt-2 py-3 border-green-600 items-center' style={{backgroundColor: busDetails.color}}>
                                 <QRCodeCanvas className='ml-28 mr-2'
                                     value="https://example.com" // Replace with your URL or text
                                     size={25}
-                                    bgColor="#aee6ae" // Light green background
-                                    fgColor="#519c51" // QR code color
+                                    bgColor={busDetails.color} // Light green background
+                                    fgColor="white" // QR code color
                                 />
                                 <div>
-                                    <p className='bg-green-100 text-green-600 font-semibold border-green-900  text-center' onClick={toggleQRCode}>Show QR code</p>
+                                    <p className='text-white font-semibold text-center' onClick={toggleQRCode}>Show QR code</p>
                                 </div>
                             </div>
                         </div>
@@ -135,6 +135,9 @@ const Ticket = () => {
             </div>
             <div className='mt-32 ml-36 pt-8'>
                 <div className='flex items-center'> <img className='w-11 h-[17px] inline' src='/im.png' /><p className='inline m-1 font-bold text-gray-600 '>NETWORK</p></div>
+            </div>
+            <div className='h-1 my-3 mx-auto'>
+                <p className='bg-red-700 text-sm text-center text-white'>Powered by IIIT Delhi</p>
             </div>
         </div>
     );
