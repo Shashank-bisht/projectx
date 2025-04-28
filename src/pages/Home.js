@@ -57,7 +57,7 @@ const Home = () => {
                 <div>
                     <label className='text-white'>
                         Color:
-                        <input
+                        <input className='text-black'
                             type="text"
                             value={color}
                             onChange={(e) => setColor(e.target.value)}
@@ -68,7 +68,7 @@ const Home = () => {
                 <div>
                     <label className='text-white'>
                         Bus Number:
-                        <input
+                        <input className='text-black'
                             type="text"
                             value={busNumber}
                             onChange={(e) => setBusNumber(e.target.value)}
@@ -79,7 +79,7 @@ const Home = () => {
                 <div>
                     <label className='text-white'>
                         Route Number:
-                        <input
+                        <input className='text-black'
                             type="text"
                             value={routeNumber}
                             onChange={(e) => setRouteNumber(e.target.value)}
@@ -90,7 +90,7 @@ const Home = () => {
                 <div>
                     <label className='text-white'>
                         Fare:
-                        <input
+                        <input className='text-black'
                             type="number"
                             value={fare}
                             onChange={(e) => setFare(e.target.value)}
@@ -101,7 +101,7 @@ const Home = () => {
                 <div>
                     <label className='text-white'>
                         Time:
-                        <input
+                        <input className='text-black'
                             type="time"
                             value={time}
                             onChange={(e) => setTime(e.target.value)}
@@ -112,7 +112,7 @@ const Home = () => {
                 <div>
                     <label className='text-white'>
                         Date:
-                        <input
+                        <input className='text-black'
                             type="date"
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
@@ -123,7 +123,7 @@ const Home = () => {
                 <div>
                     <label className='text-white'>
                         Starting Stop:
-                        <input
+                        <input className='text-black'
                             type="text"
                             value={startingStop}
                             onChange={(e) => setStartingStop(e.target.value)}
@@ -134,7 +134,7 @@ const Home = () => {
                 <div>
                     <label className='text-white'>
                         Ending Stop:
-                        <input
+                        <input className='text-black'
                             type="text"
                             value={endingStop}
                             onChange={(e) => setEndingStop(e.target.value)}
