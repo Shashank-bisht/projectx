@@ -33,9 +33,9 @@ const Ticket = () => {
 
     return (
         <div className="mt-0 h-screen" >
-            <div className='h-[814px]'  style={{ backgroundColor: busDetails.color }} >
+            <div className='h-[820px]'  style={{ backgroundColor: busDetails.color }} >
             <nav className='flex mt-2 pt-20 items-end'>
-                <div className="text-white flex items-center ml-4 mt-10">
+                <div className="text-white flex items-center ml-4 mt-3">
                     <p className="mr-2 ml-2 text-2xl">x</p>
                     <p className='text-base'>Ticket</p>
                 </div>
@@ -134,7 +134,7 @@ const Ticket = () => {
                     </>
                 )}
             </div>
-            <div className='mt-11 ml-36 pt-8'>
+            <div className='mt-20 ml-36 pt-8'>
                 <div className='flex items-center'> <img className='w-11 h-[17px] inline' src='/im.png' /><p className='inline m-1 font-bold text-gray-600 '>NETWORK</p></div>
             </div>
             <div className='h-1 my-3 mx-auto'>
