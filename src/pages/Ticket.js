@@ -63,7 +63,7 @@ const Ticket = () => {
                                 <p className='text-lg ml-4 mr-2 mt-2 inline-block'> {busDetails.busNumber}</p>
                             </div>
                             <div>
-                                <p className='text-lg ml-[169px] inline'>{'\u20B9'}{busDetails.fare}.0</p>
+                                <p className='text-lg ml-[157px] inline'>{'\u20B9'}{busDetails.fare}.0</p>
                             </div>
                         </div>
                         <hr className="border-t-1.5 mx-3 mt-2 border-black" />
