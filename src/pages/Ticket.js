@@ -32,23 +32,23 @@ const Ticket = () => {
     };
 
     return (
-        <div className="mt-20 pt-14 h-screen" >
-            <div className='h-[99vh]' style={{ backgroundColor: busDetails.color }} >
-            <nav className='flex mt-9 items-end'>
-                <div className="text-white flex items-center ml-4">
-                    <p className="mr-5 ml-2 text-2xl">x</p>
-                    <p className='text-lg'>Ticket</p>
+        <div className="mt-0 h-screen" >
+            <div className='h-[814px]'  style={{ backgroundColor: busDetails.color }} >
+            <nav className='flex mt-2 pt-20 items-end'>
+                <div className="text-white flex items-center ml-4 mt-10">
+                    <p className="mr-2 ml-2 text-2xl">x</p>
+                    <p className='text-base'>Ticket</p>
                 </div>
                 <div className='text-white underline mb-1 font-bold ml-52'>All tickets</div>
             </nav>
             {/* h1 */}
-            <div className="mt-52 bg-white mx-4 rounded-md h-[46.5%]" >
+            <div className="mt-32 bg-white mx-4 rounded-md h-[49.5%]" >
                 {showQRCode ? (
                     <div className="p-7" onClick={toggleQRCode}>
                         <QRCodeCanvas
                             className=""
                             value={`https://example.com/${randomCode}`} // Unique QR value
-                            size={350}
+                            size={310}
                             bgColor="white" // Light green background
                             fgColor="black" // QR code color
                             level="H"
@@ -56,20 +56,20 @@ const Ticket = () => {
                     </div>
                 ) : (
                     <>
-                        <h1 className='font-bold px-24 text-lg pt-2.5'>Transport Dept. of Delhi</h1>
+                        <h1 className='font-semibold px-5 ml-14 text-lg pt-4'>Transport Dept. of Delhi</h1>
                         {/* number and fare */}
                         <div className='flex items-end '>
                             <div>
-                                <p className='text-lg ml-5 mr-2 mt-2 inline-block'> {busDetails.busNumber}</p>
+                                <p className='text-lg ml-4 mr-2 mt-2 inline-block'> {busDetails.busNumber}</p>
                             </div>
                             <div>
-                                <p className='text-lg ml-[195px] inline'>{'\u20B9'}{(busDetails.fare * 0.9).toFixed(1)}</p>
+                                <p className='text-lg ml-[169px] inline'>{'\u20B9'}{busDetails.fare}.0</p>
                             </div>
                         </div>
-                        <hr className="border-t-1.5 mx-5 mt-2 border-black" />
+                        <hr className="border-t-1.5 mx-3 mt-2 border-black" />
                         {/* route and fare title */}
-                        <div className='flex items-end space-x-16'>
-                            <div className='ml-5 mt-3 mr-48 text-sm'>
+                        <div className='flex items-end space-x-8'>
+                            <div className='ml-4 mt-3 mr-48 text-sm'>
                                 <p>Bus Route</p>
                             </div>
                             <div className='ml-28 text-sm'>
@@ -77,32 +77,32 @@ const Ticket = () => {
                             </div>
                         </div>
                         {/* route number and price */}
-                        <div className='flex items-end space-x-14'>
-                            <div className='ml-5 mr-56 text-lg'>
+                        <div className='flex items-end space-x-8'>
+                            <div className='ml-4 mr-52 text-lg'>
                                 <p>{busDetails.routeNumber}</p>
                             </div>
-                            <div className='ml-28 text-lg'>
-                                <p className='font-semibold'>{'\u20B9'}{busDetails.fare}.0</p>
+                            <div className='ml-9 text-lg'>
+                                <p className='font-semibold'>{'\u20B9'}{(busDetails.fare * 0.9).toFixed(1)}</p>
                             </div>
                         </div>
 
                         {/* Booking time and tickets heading */}
-                        <div className='flex items-end space-x-16'>
-                            <div className='ml-5 mt-2 mr-40 text-sm'>
+                        <div className='flex items-end space-x-8'>
+                            <div className='ml-4 mt-2 mr-32 text-sm'>
                                 <p>Booking Time</p>
                             </div>
                             <div className='ml-10 text-sm'>
-                                <p>Tickets</p>
+                                <p>Bus Tickets</p>
                             </div>
                         </div>
 
                         {/* booking date and time and number of ticket */}
-                        <div className='flex items-end space-x-15'>
+                        <div className='flex items-end space-x-8'>
                             <div className='ml-4 mr-10 text-lg'>
                                 <p>{busDetails.date}<span className="mx-1">|</span>{busDetails.time}</p>
                             </div>
-                            <div className='ml-11 text-lg'>
-                                <p className='ml-20'>1</p>
+                            <div className='ml-7 text-lg'>
+                                <p className='ml-16'>1</p>
                             </div>
                         </div>
                         <div className='mt-2 ml-4'>
@@ -114,12 +114,12 @@ const Ticket = () => {
                             <p className='text-lg text-black'>{busDetails.endingStop}</p>
                         </div>
                         {/* random code */}
-                        <div className='mt-1 ml-32'>
+                        <div className='mt-1 ml-28'>
                             <p className='text-sm'>T{randomCode}</p>
                         </div>
                         {/* qr code */}
                         <div>
-                            <div className='flex ml-3 mr-3 mb-3 mt-2 py-3 border-green-600 items-center' style={{backgroundColor: busDetails.color}}>
+                            <div className='flex ml-3 mr-4 mb-3 mt-1 py-3 border-green-600 items-center' style={{backgroundColor: busDetails.color}}>
                                 <QRCodeCanvas className='ml-28 mr-2'
                                     value="https://example.com" // Replace with your URL or text
                                     size={25}
@@ -134,7 +134,7 @@ const Ticket = () => {
                     </>
                 )}
             </div>
-            <div className='mt-32 ml-36 pt-8'>
+            <div className='mt-11 ml-36 pt-8'>
                 <div className='flex items-center'> <img className='w-11 h-[17px] inline' src='/im.png' /><p className='inline m-1 font-bold text-gray-600 '>NETWORK</p></div>
             </div>
             <div className='h-1 my-3 mx-auto'>
