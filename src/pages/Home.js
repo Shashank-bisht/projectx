@@ -17,6 +17,7 @@ const Home = () => {
         blue: '#0bc1c1', // Custom shade of blue
         green: '#66a64c', // Custom shade of green
         orange: '#f08b35', // Custom shade of orange
+        darkblue: '#1646f2' // custom shade for 143 number
     };
 
     const handleSubmit = (event) => {

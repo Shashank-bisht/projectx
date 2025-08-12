@@ -13,15 +13,28 @@ const Ticket = () => {
     }, [busDetails.color]);
 
     // Function to generate a random code
-    function generateRandomCode(length = 18) {
-        const characters = 'abcd023456789'; // Only lowercase letters and digits
-        let randomCode = '';
-        for (let i = 0; i < length; i++) {
-            const randomIndex = Math.floor(Math.random() * characters.length);
-            randomCode += characters[randomIndex];
-        }
-        return randomCode;
+    function generateRandomCode() {
+    const characters = 'abcdef0123456789'; // lowercase letters + digits
+    const date = new Date();
+
+    // Format date as ddMMyyyy
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-based
+    const year = date.getFullYear();
+
+    // Generate 10 random characters
+    let randomPart = '';
+    for (let i = 0; i < 10; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        randomPart += characters[randomIndex];
     }
+
+    return `${day}${month}${year}${randomPart}`;
+}
+
+// Example usage
+console.log(generateRandomCode()); // T08082025nlf8h39kl2
+
 
     // Generate the random code
     const randomCode = generateRandomCode();
@@ -56,7 +69,7 @@ const Ticket = () => {
                     </div>
                 ) : (
                     <>
-                        <h1 className='font-semibold px-5 ml-14 text-lg pt-4'>Transport Dept. of Delhi</h1>
+                        <h1 className='font-medium px-5 ml-14 text-lg pt-4'>Transport Dept. of Delhi</h1>
                         {/* number and fare */}
                         <div className='flex items-end '>
                             <div>
@@ -82,7 +95,7 @@ const Ticket = () => {
                                 <p>{busDetails.routeNumber}</p>
                             </div>
                             <div className='ml-9 text-lg'>
-                                <p className='font-semibold'>{'\u20B9'}{(busDetails.fare * 0.9).toFixed(1)}</p>
+                                <p className='font-medium'>{'\u20B9'}{(busDetails.fare * 0.9).toFixed(1)}</p>
                             </div>
                         </div>
 
@@ -120,7 +133,7 @@ const Ticket = () => {
                         {/* qr code */}
                         <div>
                             <div className='flex ml-3 mr-4 mb-3 mt-1 py-3 border-green-600 items-center' style={{backgroundColor: busDetails.color}}>
-                                <QRCodeCanvas className='ml-28 mr-2'
+                                <QRCodeCanvas className='ml-[85px] mr-2'
                                     value="https://example.com" // Replace with your URL or text
                                     size={25}
                                     bgColor={busDetails.color} // Light green background
